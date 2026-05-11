@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>L.Tech Solutions – Empowering Future Tech Leaders</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#070B18;
+  --surface:#0D1325;
+  --surface2:#131929;
+  --electric:#00E5FF;
+  --pink:#FF4D8D;
+  --purple:#7B5EA7;
+  --amber:#FFB347;
+  --white:#FFFFFF;
+  --muted:#7A8BAA;
+  --border:rgba(255,255,255,0.07);
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--white);font-family:'DM Sans',sans-serif;overflow-x:hidden}
+
+/* NAV */
+nav{
+  position:fixed;top:0;width:100%;z-index:200;
+  padding:1.1rem 6%;
+  display:flex;align-items:center;justify-content:space-between;
+  background:rgba(7,11,24,0.85);backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border)
+}
+.logo{font-family:'Syne',sans-serif;font-size:1.4rem;font-weight:800;letter-spacing:-0.5px}
+.logo span{color:var(--electric)}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:0.88rem;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:var(--white)}
+.nav-cta{
+  background:linear-gradient(135deg,var(--electric),#0099BB);
+  color:#040810;padding:.55rem 1.4rem;border-radius:30px;
+  font-weight:700;font-size:0.85rem;text-decoration:none;font-family:'Syne',sans-serif
+}
+
+/* HERO */
+.hero{
+  min-height:100vh;padding:9rem 6% 5rem;
+  display:flex;align-items:center;gap:3rem;
+  position:relative;z-index:1;overflow:hidden
+}
+.glow-orb{position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none}
+.orb1{width:500px;height:500px;top:-100px;right:-80px;background:radial-gradient(circle,rgba(123,94,167,.35) 0%,transparent 70%)}
+.orb2{width:350px;height:350px;bottom:0;left:-60px;background:radial-gradient(circle,rgba(0,229,255,.12) 0%,transparent 70%)}
+.hero-text{flex:1;max-width:600px}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:.5rem;
+  background:rgba(0,229,255,.07);border:1px solid rgba(0,229,255,.2);
+  padding:.35rem 1rem;border-radius:30px;
+  font-size:.75rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--electric);font-family:'Syne',sans-serif;margin-bottom:1.5rem
+}
+.eyebrow .dot{width:6px;height:6px;background:var(--electric);border-radius:50%;display:inline-block;animation:pulse 1.5s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.7)}}
+.hero h1{
+  font-family:'Syne',sans-serif;font-size:clamp(3rem,5.5vw,4.8rem);
+  font-weight:800;line-height:1.05;letter-spacing:-2px;margin-bottom:1.5rem
+}
+.hero h1 em{font-style:normal;color:var(--electric)}
+.hero p{font-size:1.05rem;color:var(--muted);line-height:1.8;max-width:480px;margin-bottom:2.5rem}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap}
+.btn-glow{
+  background:linear-gradient(135deg,var(--electric),#00AACF);
+  color:#040810;padding:.9rem 2rem;border-radius:30px;
+  font-weight:700;font-size:.95rem;text-decoration:none;
+  font-family:'Syne',sans-serif;
+  box-shadow:0 0 30px rgba(0,229,255,.25);
+  transition:box-shadow .3s,transform .2s
+}
+.btn-glow:hover{box-shadow:0 0 50px rgba(0,229,255,.45);transform:translateY(-2px)}
+.btn-outline{
+  border:1.5px solid rgba(255,255,255,.15);color:var(--white);
+  padding:.9rem 2rem;border-radius:30px;font-weight:500;font-size:.95rem;
+  text-decoration:none;transition:border-color .2s,background .2s
+}
+.btn-outline:hover{border-color:rgba(255,255,255,.35);background:rgba(255,255,255,.04)}
+.hero-visual{flex-shrink:0;position:relative;z-index:1}
+.founder-frame{position:relative;width:300px}
+.founder-frame::before{
+  content:'';position:absolute;inset:-3px;
+  background:linear-gradient(135deg,var(--electric),var(--purple),var(--pink));
+  border-radius:22px;z-index:0;opacity:.8
+}
+.founder-frame img{
+  position:relative;z-index:1;width:100%;height:360px;
+  object-fit:cover;object-position:top center;
+  border-radius:20px;display:block
+}
+.founder-badge{
+  position:absolute;bottom:-20px;left:50%;transform:translateX(-50%);
+  background:var(--surface2);border:1px solid rgba(0,229,255,.25);
+  padding:.5rem 1.2rem;border-radius:30px;white-space:nowrap;
+  font-size:.78rem;color:var(--white);font-weight:600;z-index:2;
+  font-family:'Syne',sans-serif;display:flex;align-items:center;gap:.5rem
+}
+.founder-badge em{color:var(--electric);font-style:normal}
+
+/* MARQUEE */
+.marquee-wrap{
+  overflow:hidden;padding:1.4rem 0;
+  border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+  background:var(--surface);position:relative;z-index:1
+}
+.marquee-track{display:flex;gap:3rem;width:max-content;animation:marquee 22s linear infinite}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.mitem{
+  display:flex;align-items:center;gap:.6rem;
+  font-family:'Syne',sans-serif;font-size:.78rem;font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--muted);white-space:nowrap
+}
+.mitem i{color:var(--electric);font-size:.45rem}
+
+/* STATS */
+.stats{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:1px;background:var(--border);
+  border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+  position:relative;z-index:1
+}
+.stat{background:var(--surface);padding:2.5rem 2rem;text-align:center}
+.stat-num{
+  font-family:'Syne',sans-serif;font-size:2.8rem;font-weight:800;
+  background:linear-gradient(135deg,var(--electric),#7B5EA7);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text
+}
+.stat-label{font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-top:.4rem}
+
+/* SECTION */
+section{padding:6rem 6%;position:relative;z-index:1}
+.section-label{
+  font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--electric);font-family:'Syne',sans-serif;margin-bottom:.75rem
+}
+.section-title{
+  font-family:'Syne',sans-serif;font-size:clamp(2rem,3.5vw,2.8rem);
+  font-weight:800;color:var(--white);margin-bottom:1rem;letter-spacing:-1px;line-height:1.15
+}
+.section-sub{color:var(--muted);font-size:1rem;max-width:520px;line-height:1.75;margin-bottom:3.5rem}
+
+/* SERVICES */
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.5rem}
+.svc{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:20px;padding:2rem;
+  transition:border-color .3s,transform .3s,background .3s;
+  position:relative;overflow:hidden
+}
+.svc::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,var(--electric),var(--purple));
+  opacity:0;transition:opacity .3s
+}
+.svc:hover{border-color:rgba(0,229,255,.2);transform:translateY(-6px);background:var(--surface2)}
+.svc:hover::before{opacity:1}
+.svc-icon{
+  width:48px;height:48px;border-radius:14px;
+  background:rgba(0,229,255,.08);border:1px solid rgba(0,229,255,.15);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.4rem;margin-bottom:1.2rem
+}
+.svc h3{font-family:'Syne',sans-serif;font-size:1.05rem;font-weight:700;margin-bottom:.6rem}
+.svc p{font-size:.88rem;color:var(--muted);line-height:1.7}
+
+/* PROJECTS */
+.projects-bg{background:var(--surface)}
+.projects-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem}
+
+/* SAFEHER BIG CARD */
+.safeher-card{
+  grid-column:1/-1;
+  background:var(--bg);
+  border:1px solid rgba(255,77,141,.25);
+  border-radius:24px;overflow:hidden;
+  display:grid;grid-template-columns:1fr 400px;
+  min-height:380px;position:relative
+}
+.safeher-card::after{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at 75% 50%,rgba(255,77,141,.08) 0%,transparent 55%);
+  pointer-events:none
+}
+.shc-left{padding:3rem;display:flex;flex-direction:column;justify-content:center;position:relative;z-index:1}
+.shc-badge{
+  display:inline-flex;align-items:center;gap:.5rem;
+  background:rgba(255,77,141,.1);border:1px solid rgba(255,77,141,.3);
+  color:var(--pink);padding:.3rem .9rem;border-radius:20px;
+  font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  font-family:'Syne',sans-serif;margin-bottom:1.2rem;width:fit-content
+}
+.shc-left h3{
+  font-family:'Syne',sans-serif;font-size:2.2rem;font-weight:800;
+  letter-spacing:-1px;line-height:1.1;margin-bottom:1rem
+}
+.shc-left h3 .pk{color:var(--pink)}
+.shc-left p{color:var(--muted);font-size:.93rem;line-height:1.75;margin-bottom:1.5rem;max-width:400px}
+.tech-pills{display:flex;flex-wrap:wrap;gap:.45rem;margin-bottom:1.2rem}
+.tp{
+  padding:.25rem .75rem;border-radius:20px;font-size:.72rem;font-weight:500;
+  background:rgba(255,77,141,.08);border:1px solid rgba(255,77,141,.2);color:#FF8AB8
+}
+.tp.grey{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.1);color:var(--muted)}
+.feat-list{display:flex;flex-direction:column;gap:.5rem}
+.feat-item{display:flex;align-items:center;gap:.5rem;font-size:.83rem;color:var(--muted)}
+.feat-dot{width:5px;height:5px;border-radius:50%;background:var(--pink);flex-shrink:0}
+
+/* PHONE UI */
+.phone-area{
+  position:relative;display:flex;align-items:center;justify-content:center;
+  padding:2rem;overflow:hidden
+}
+.phone-area::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(circle at center,rgba(255,77,141,.12) 0%,transparent 65%)
+}
+.phone-wrap{
+  position:relative;z-index:1;
+  width:175px;height:360px;
+  background:#100818;
+  border-radius:34px;
+  border:2px solid rgba(255,255,255,.1);
+  overflow:hidden;
+  box-shadow:0 30px 60px rgba(0,0,0,.7),0 0 50px rgba(255,77,141,.12)
+}
+.p-notch{width:55px;height:11px;background:#100818;border-radius:0 0 9px 9px;margin:0 auto 10px;flex-shrink:0}
+.p-body{padding:0 10px;display:flex;flex-direction:column;gap:7px}
+.p-header{
+  background:linear-gradient(135deg,rgba(255,77,141,.28),rgba(100,0,60,.15));
+  border:1px solid rgba(255,77,141,.15);
+  border-radius:11px;padding:9px;text-align:center
+}
+.p-appname{font-size:10px;font-weight:800;color:#FF4D8D;font-family:'Syne',sans-serif;letter-spacing:1px}
+.p-sub{font-size:6.5px;color:rgba(255,77,141,.5);margin-top:2px}
+.p-sos-wrap{display:flex;justify-content:center;margin:3px 0}
+.p-sos{
+  width:62px;height:62px;border-radius:50%;
+  background:linear-gradient(135deg,#FF4D8D,#CC1F5F);
+  display:flex;align-items:center;justify-content:center;
+  font-size:11px;font-weight:900;color:white;font-family:'Syne',sans-serif;
+  letter-spacing:1px;box-shadow:0 0 24px rgba(255,77,141,.55)
+}
+.p-grid{display:grid;grid-template-columns:1fr 1fr;gap:5px}
+.p-cell{
+  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);
+  border-radius:8px;padding:6px;text-align:center
+}
+.p-cell .pci{font-size:12px;margin-bottom:2px}
+.p-cell .pcl{font-size:6px;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.3px;font-family:'Syne',sans-serif}
+.p-status{
+  background:rgba(0,255,100,.05);border:1px solid rgba(0,255,100,.1);
+  border-radius:8px;padding:6px 8px;display:flex;align-items:center;gap:5px
+}
+.sdot{width:5px;height:5px;border-radius:50%;background:#00FF64;flex-shrink:0;animation:pulse 1.5s infinite}
+.stxt{font-size:7px;color:rgba(0,255,100,.65)}
+
+/* small phone beside */
+.phone-back{
+  position:absolute;right:14px;top:50%;transform:translateY(-55%);
+  width:130px;height:270px;
+  background:#0A0514;border-radius:26px;
+  border:2px solid rgba(255,255,255,.06);
+  opacity:.55;overflow:hidden;
+  box-shadow:0 20px 40px rgba(0,0,0,.5)
+}
+.pb-inner{
+  width:100%;height:100%;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:6px;padding:14px
+}
+.pb-title{font-size:7px;font-weight:700;color:#B48FD8;font-family:'Syne',sans-serif;text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px}
+.pb-contacts{display:flex;flex-direction:column;gap:4px;width:100%}
+.pbc{
+  background:rgba(255,255,255,.04);border-radius:6px;padding:4px 5px;
+  display:flex;align-items:center;gap:4px
+}
+.pbc-av{width:13px;height:13px;border-radius:50%;flex-shrink:0}
+.pbc-n{font-size:6px;color:rgba(255,255,255,.65)}
+.pbc-s{font-size:5px;color:rgba(123,94,167,.65)}
+
+/* regular project cards */
+.proj-card{
+  background:var(--bg);border:1px solid var(--border);
+  border-radius:20px;padding:2rem;position:relative;overflow:hidden;
+  transition:border-color .3s,transform .3s
+}
+.proj-card:hover{transform:translateY(-5px)}
+.proj-card.c-teal:hover{border-color:rgba(0,229,255,.25)}
+.proj-card.c-amber:hover{border-color:rgba(255,179,71,.25)}
+.proj-line{position:absolute;top:0;left:0;right:0;height:2px}
+.c-teal .proj-line{background:linear-gradient(90deg,var(--electric),#0099BB)}
+.c-amber .proj-line{background:linear-gradient(90deg,var(--amber),#CC8800)}
+.proj-num{
+  font-family:'Syne',sans-serif;font-size:3.5rem;font-weight:800;
+  opacity:.06;position:absolute;top:.8rem;right:1.5rem;line-height:1
+}
+.ptag{
+  display:inline-block;padding:.25rem .75rem;border-radius:20px;
+  font-size:.7rem;font-weight:700;text-transform:uppercase;
+  letter-spacing:.06em;font-family:'Syne',sans-serif;margin-bottom:1rem
+}
+.c-teal .ptag{background:rgba(0,229,255,.08);color:var(--electric);border:1px solid rgba(0,229,255,.15)}
+.c-amber .ptag{background:rgba(255,179,71,.08);color:var(--amber);border:1px solid rgba(255,179,71,.15)}
+.proj-card h3{font-family:'Syne',sans-serif;font-size:1.2rem;font-weight:700;margin-bottom:.6rem}
+.proj-card p{font-size:.88rem;color:var(--muted);line-height:1.7;margin-bottom:1.2rem}
+.proj-techs{display:flex;flex-wrap:wrap;gap:.4rem}
+.pt2{
+  padding:.2rem .6rem;border-radius:20px;font-size:.7rem;
+  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);color:var(--muted)
+}
+
+/* WEBINAR */
+.webinar-wrap{
+  background:var(--surface);border-radius:28px;padding:4rem;
+  border:1px solid var(--border);position:relative;overflow:hidden
+}
+.webinar-wrap::before{
+  content:'';position:absolute;top:-100px;right:-100px;
+  width:350px;height:350px;border-radius:50%;
+  background:radial-gradient(circle,rgba(0,229,255,.07) 0%,transparent 70%);
+  pointer-events:none
+}
+.webinar-inner{display:flex;align-items:center;justify-content:space-between;gap:3rem;flex-wrap:wrap}
+.wl{
+  display:inline-flex;align-items:center;gap:.5rem;
+  font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--electric);font-family:'Syne',sans-serif;margin-bottom:.8rem
+}
+.wldot{width:6px;height:6px;border-radius:50%;background:var(--electric);animation:pulse 1.5s infinite}
+.webinar-wrap h2{font-family:'Syne',sans-serif;font-size:2rem;font-weight:800;margin-bottom:.6rem;letter-spacing:-.5px}
+.webinar-wrap p{color:var(--muted);font-size:.95rem;max-width:400px;line-height:1.7}
+.w-perks{display:flex;flex-direction:column;gap:.5rem;margin-top:1.2rem}
+.wperk{display:flex;align-items:center;gap:.6rem;font-size:.85rem;color:var(--muted)}
+.wperk::before{
+  content:'✓';width:20px;height:20px;border-radius:50%;
+  background:rgba(0,229,255,.1);color:var(--electric);
+  display:inline-flex;align-items:center;justify-content:center;
+  font-size:.7rem;font-weight:700;flex-shrink:0
+}
+.webinar-cta{display:flex;flex-direction:column;gap:1rem;align-items:flex-start}
+
+/* FOUNDER */
+.founder-sec{background:var(--surface)}
+.founder-grid{display:grid;grid-template-columns:280px 1fr;gap:5rem;align-items:center}
+.founder-photo{position:relative}
+.founder-photo::before{
+  content:'';position:absolute;inset:-3px;
+  background:linear-gradient(135deg,var(--electric),var(--purple),var(--pink));
+  border-radius:22px;z-index:0
+}
+.founder-photo img{
+  position:relative;z-index:1;width:100%;height:340px;
+  object-fit:cover;object-position:top center;border-radius:20px;display:block
+}
+.founder-det h2{font-family:'Syne',sans-serif;font-size:2.2rem;font-weight:800;letter-spacing:-.5px;margin-bottom:.3rem}
+.role-tag{
+  display:inline-flex;align-items:center;gap:.5rem;
+  background:rgba(0,229,255,.08);border:1px solid rgba(0,229,255,.2);
+  color:var(--electric);padding:.3rem .9rem;border-radius:20px;
+  font-size:.78rem;font-weight:700;font-family:'Syne',sans-serif;margin-bottom:1.5rem
+}
+.founder-det p{color:var(--muted);font-size:.95rem;line-height:1.8;margin-bottom:2rem;max-width:500px}
+.contact-items{display:flex;flex-direction:column;gap:.8rem}
+.ci{
+  display:flex;align-items:center;gap:.8rem;
+  background:var(--bg);border:1px solid var(--border);
+  border-radius:12px;padding:.75rem 1rem;width:fit-content;min-width:280px;
+  transition:border-color .2s
+}
+.ci:hover{border-color:rgba(0,229,255,.2)}
+.ci-ico{font-size:1rem;width:28px;text-align:center}
+.ci-txt{font-size:.88rem;color:var(--muted)}
+.ci-txt a{color:var(--electric);text-decoration:none;font-weight:500}
+.ci-txt a:hover{text-decoration:underline}
+
+/* FOOTER */
+footer{
+  padding:2rem 6%;border-top:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;gap:1rem;color:var(--muted);font-size:.82rem;
+  position:relative;z-index:1
+}
+
+/* RESPONSIVE */
+@media(max-width:1000px){
+  .safeher-card{grid-template-columns:1fr}
+  .phone-area{height:280px}
+  .phone-back{display:none}
+  .founder-grid{grid-template-columns:1fr}
+  .founder-photo{max-width:260px;margin:0 auto}
+}
+@media(max-width:768px){
+  .hero{flex-direction:column;text-align:center;padding-top:7rem}
+  .hero p{margin:0 auto 2rem}
+  .hero-btns{justify-content:center}
+  .hero-visual{order:-1}
+  .founder-frame{width:240px}
+  nav .nav-links,nav .nav-cta{display:none}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .projects-grid{grid-template-columns:1fr}
+  .webinar-inner{flex-direction:column;text-align:center}
+  .webinar-cta{align-items:center}
+  .shc-left{padding:1.5rem}
+  .shc-left h3{font-size:1.6rem}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">L.<span>Tech</span> Solutions</div>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#projects">SafeHer</a></li>
+    <li><a href="#about">About</a></li>
+  </ul>
+  <a href="mailto:divakarbethapudi@gmail.com" class="nav-cta">Contact Us</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="glow-orb orb1"></div>
+  <div class="glow-orb orb2"></div>
+  <div class="hero-text">
+    <div class="eyebrow"><span class="dot"></span> Free Webinars Open for Students</div>
+    <h1>Build Real Skills.<br>Ship <em>Real</em><br>Products.</h1>
+    <p>L.Tech Solutions bridges the gap between campus and industry. Work on real-time projects — including SafeHer, our live women's safety app — and launch your tech career with work that matters.</p>
+    <div class="hero-btns">
+      <a href="#webinar" class="btn-glow">Join Free Webinar</a>
+      <a href="#projects" class="btn-outline">See Our Projects →</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="founder-frame">
+      <img src="c:\Users\DELL\Pictures\54724b9d-64b0-4a43-b9c1-44c4cbe32aca.jpg" alt="L.TECH SOFTWARE SOLUTIONS">
+      <div class="founder-badge">⚡ <em>DiVAKAR </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <div class="mitem"><i>◆</i> Real-Time Projects</div>
+    <div class="mitem"><i>◆</i> Free Student Webinars</div>
+    <div class="mitem"><i>◆</i> Flutter Development</div>
+    <div class="mitem"><i>◆</i> SafeHer Women Safety App</div>
+    <div class="mitem"><i>◆</i> Full Stack Web Apps</div>
+    <div class="mitem"><i>◆</i> Project Certification</div>
+    <div class="mitem"><i>◆</i> Industry Mentorship</div>
+    <div class="mitem"><i>◆</i> Real-Time Projects</div>
+    <div class="mitem"><i>◆</i> Free Student Webinars</div>
+    <div class="mitem"><i>◆</i> Flutter Development</div>
+    <div class="mitem"><i>◆</i> SafeHer Women Safety App</div>
+    <div class="mitem"><i>◆</i> Full Stack Web Apps</div>
+    <div class="mitem"><i>◆</i> Project Certification</div>
+    <div class="mitem"><i>◆</i> Industry Mentorship</div>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stat"><div class="stat-num">3+</div><div class="stat-label">Real-Time Projects</div></div>
+  <div class="stat"><div class="stat-num">Free</div><div class="stat-label">Student Webinars</div></div>
+  <div class="stat"><div class="stat-num">100%</div><div class="stat-label">Practical Learning</div></div>
+  <div class="stat"><div class="stat-num">2024–26</div><div class="stat-label">Founded</div></div>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-label">What We Offer</div>
+  <h2 class="section-title">From Learning to Launching</h2>
+  <p class="section-sub">Everything a student needs to go from classroom theory to industry-ready developer.</p>
+  <div class="services-grid">
+    <div class="svc">
+      <div class="svc-icon">🎓</div>
+      <h3>Free Student Webinars</h3>
+      <p>Live sessions on Flutter, web dev, AI tools, and cloud. Open to all students — completely free.</p>
+    </div>
+    <div class="svc">
+      <div class="svc-icon">💻</div>
+      <h3>Real-Time Project Training</h3>
+      <p>Work on production-grade projects with real data and real deadlines. Build a portfolio that impresses.</p>
+    </div>
+    <div class="svc">
+      <div class="svc-icon">🤝</div>
+      <h3>Mentorship & Guidance</h3>
+      <p>1-on-1 mentoring from working developers. Code reviews, career advice, and interview prep.</p>
+    </div>
+    <div class="svc">
+      <div class="svc-icon">🏆</div>
+      <h3>Project Certification</h3>
+      <p>Earn verified certificates for real-time projects — credentials that strengthen your resume.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="projects-bg">
+  <div class="section-label">Our Work</div>
+  <h2 class="section-title">3 Major Real-Time Projects</h2>
+  <p class="section-sub">Not toy apps — production-grade builds with modern tech stacks that students work on live.</p>
+  <div class="projects-grid">
+
+    <!-- SAFEHER BIG CARD -->
+    <div class="safeher-card">
+      <div class="shc-left">
+        <div class="shc-badge">🛡️ Flagship Project · Biggest App</div>
+        <h3><span class="pk">SafeHer</span> —<br>Women Safety App</h3>
+        <p>Our biggest real-time project. SafeHer is a fully working women's safety application built in Flutter. One-tap SOS, live GPS tracking, trusted contact alerts, and shake-to-trigger — all running live in production.</p>
+        <div class="tech-pills">
+          <span class="tp">Flutter</span>
+          <span class="tp">Dart</span>
+          <span class="tp grey">Firebase</span>
+          <span class="tp grey">Google Maps API</span>
+          <span class="tp grey">Twilio SMS</span>
+          <span class="tp grey">Realtime DB</span>
+        </div>
+        <div class="feat-list">
+          <div class="feat-item"><div class="feat-dot"></div>One-Tap SOS Emergency Button</div>
+          <div class="feat-item"><div class="feat-dot"></div>Real-Time Live Location Sharing</div>
+          <div class="feat-item"><div class="feat-dot"></div>Instant Trusted Contact Alerts</div>
+          <div class="feat-item"><div class="feat-dot"></div>Shake-to-Trigger SOS Feature</div>
+        </div>
+      </div>
+      <div class="phone-area">
+        <!-- Side phone -->
+        <div class="phone-back">
+          <div class="pb-inner">
+            <div class="pb-title">Trusted Contacts</div>
+            <div class="pb-contacts">
+              <div class="pbc"><div class="pbc-av" style="background:linear-gradient(135deg,#7B5EA7,#4A2E7A)"></div><div><div class="pbc-n">Mom</div><div class="pbc-s">● Watching</div></div></div>
+              <div class="pbc"><div class="pbc-av" style="background:linear-gradient(135deg,#FF4D8D,#CC1F5F)"></div><div><div class="pbc-n">Sister</div><div class="pbc-s">● Notified</div></div></div>
+              <div class="pbc"><div class="pbc-av" style="background:linear-gradient(135deg,#0099BB,#005577)"></div><div><div class="pbc-n">Friend</div><div class="pbc-s">● Available</div></div></div>
+            </div>
+          </div>
+        </div>
+        <!-- Main phone -->
+        <div class="phone-wrap">
+          <div class="p-notch"></div>
+          <div class="p-body">
+            <div class="p-header">
+              <div class="p-appname">🛡️ SAFEHER</div>
+              <div class="p-sub">Your Safety, Always First</div>
+            </div>
+            <div class="p-sos-wrap">
+              <div class="p-sos">SOS</div>
+            </div>
+            <div class="p-grid">
+              <div class="p-cell"><div class="pci">📍</div><div class="pcl">Location</div></div>
+              <div class="p-cell"><div class="pci">👥</div><div class="pcl">Contacts</div></div>
+              <div class="p-cell"><div class="pci">🔔</div><div class="pcl">Alerts</div></div>
+              <div class="p-cell"><div class="pci">🗺️</div><div class="pcl">Safe Route</div></div>
+            </div>
+            <div class="p-status">
+              <div class="sdot"></div>
+              <div class="stxt">Live tracking active · 3 contacts watching</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project 2 -->
+    <div class="proj-card c-teal">
+      <div class="proj-line"></div>
+      <div class="proj-num">02</div>
+      <div class="ptag">E-Commerce</div>
+      <h3>Smart E-Commerce Platform</h3>
+      <p>A full-stack marketplace with real-time inventory management, payment gateway integration, and seller analytics dashboards — built for scale from day one.</p>
+      <div class="proj-techs">
+        <span class="pt2">React</span>
+        <span class="pt2">Node.js</span>
+        <span class="pt2">MongoDB</span>
+        <span class="pt2">Stripe API</span>
+        <span class="pt2">Express</span>
+      </div>
+    </div>
+
+    <!-- Project 3 -->
+    <div class="proj-card c-amber">
+      <div class="proj-line"></div>
+      <div class="proj-num">03</div>
+      <div class="ptag">Smart Campus</div>
+      <h3>Real-Time Attendance System</h3>
+      <p>Face-recognition based attendance tracker for colleges — live reporting, admin controls, SMS alerts, and full audit logs powered by computer vision.</p>
+      <div class="proj-techs">
+        <span class="pt2">Python</span>
+        <span class="pt2">OpenCV</span>
+        <span class="pt2">Flask</span>
+        <span class="pt2">MySQL</span>
+        <span class="pt2">Twilio</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- WEBINAR -->
+<section id="webinar">
+  <div class="webinar-wrap">
+    <div class="webinar-inner">
+      <div>
+        <div class="wl"><span class="wldot"></span> 100% Free · No Cost Ever</div>
+        <h2>Join Our Next<br>Live Webinar</h2>
+        <p>Industry-focused sessions on Flutter, web dev, AI, and more. Limited seats — register now and secure your spot.</p>
+        <div class="w-perks">
+          <div class="wperk">Open to all students — any college, any year</div>
+          <div class="wperk">Live Q&amp;A with working developers</div>
+          <div class="wperk">Session recordings shared after class</div>
+          <div class="wperk">Certificate of participation provided</div>
+        </div>
+      </div>
+      <div class="webinar-cta">
+        <a href="mailto:divakarbethapudi@gmail.com" class="btn-glow" style="font-size:1rem;padding:1rem 2.2rem;white-space:nowrap">✉️ Register via Email</a>
+        <a href="https://chat.whatsapp.com/Jp452mam7lDGa91BJZyYP9" target="_blank" class="btn-outline" style="text-align:center;white-space:nowrap;display:flex;align-items:center;gap:.5rem">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Join WhatsApp Community
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- NEW DOMAIN SECTION -->
+<section id="domains">
+  <div class="section-label">Client Solutions</div>
+  <h2 class="section-title">Enterprise Development Domains</h2>
+  <p class="section-sub">
+    We deliver complete end-to-end software solutions for clients using modern technologies across AI, cloud, DevOps, full-stack development, and mobile applications.
+  </p>
+
+  <div class="services-grid">
+
+    <div class="svc">
+      <div class="svc-icon">🤖</div>
+      <h3>AI Powered Applications</h3>
+      <p>
+        Building intelligent AI solutions including chatbots, automation systems,
+        recommendation engines, and AI-integrated business platforms.
+      </p>
+    </div>
+
+    <div class="svc">
+      <div class="svc-icon">🌐</div>
+      <h3>Full Stack Development</h3>
+      <p>
+        End-to-end web application development using modern frontend and backend
+        technologies with scalable architecture and secure APIs.
+      </p>
+    </div>
+
+    <div class="svc">
+      <div class="svc-icon">☁️</div>
+      <h3>Cloud & DevOps</h3>
+      <p>
+        Cloud deployment, CI/CD pipelines, Docker, Kubernetes, server management,
+        and scalable DevOps infrastructure solutions for businesses.
+      </p>
+    </div>
+
+    <div class="svc">
+      <div class="svc-icon">📱</div>
+      <h3>Flutter Mobile Apps</h3>
+      <p>
+        Cross-platform Android and iOS mobile application development using Flutter
+        with modern UI/UX and real-time backend integration.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOUNDER -->
+<section id="about" class="founder-sec">
+  <div class="founder-grid">
+    <div class="founder-photo">
+      <img Src= "c:\Users\DELL\Downloads\409325d1-c80e-4551-8892-5ef0ff841bd1.jpg" alt="Divakar Bethapudi">
+    </div>
+    <div class="founder-det">
+      <div class="section-label">Meet the Founder</div>
+      <h2>Divakar<br>Bethapudi</h2>
+      <div class="role-tag">⚡ Founder & CEO — L.Tech Solutions</div>
+      <p>A recently graduated tech entrepreneur passionate about making quality education accessible to every student. Divakar started L.Tech Solutions to bridge the industry-education gap — through real projects like SafeHer, free webinars, and hands-on mentorship that truly prepares students for tech careers.</p>
+      <div class="contact-items">
+        <div class="ci"><div class="ci-ico">📞</div><div class="ci-txt"><a href="tel:9703612824">+91 970 361 2824</a></div></div>
+        <div class="ci"><div class="ci-ico">📧</div><div class="ci-txt"><a href="mailto:divakarbethapudi@gmail.com">divakarbethapudi@gmail.com</a></div></div>
+        <div class="ci"><div class="ci-ico">📍</div><div class="ci-txt">CHIRALA, AP , India</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="logo">L.<span>Tech</span> Solutions</div>
+  <div>© 2026 L.Tech Solutions. Empowering Future Tech Leaders.</div>
+  <a href="mailto:divakarbethapudi@gmail.com" style="color:var(--electric);text-decoration:none">Get in Touch →</a>
+</footer>
+
+</body>
+</html>
